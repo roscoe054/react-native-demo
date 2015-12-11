@@ -37,9 +37,11 @@ var SearchScreen = React.createClass({
   timeoutID: (null: any),
 
   getInitialState: function() {
+    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     return {
       isLoading: false,
       isLoadingTail: false,
+      dataSource: ds.cloneWithRows(['row 1', 'row 2', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3', 'row 3']),
       filter: '',
       queryNumber: 0,
     };
@@ -52,6 +54,11 @@ var SearchScreen = React.createClass({
         <SearchBar
             onSearchChange={this.onSearchChange}
             isLoading={this.state.isLoading}
+        />
+        <ListView
+            ref="listview"
+            dataSource={this.state.dataSource}
+            renderRow={(rowData) => <Text>{rowData}</Text>}
         />
       </View>
     );
