@@ -71,6 +71,7 @@ var AwesomeProject = React.createClass({
     },
 
     renderMovie: function (movie) {
+        console.log("test")
         return (
             <View style={styles.container}>
                 <Image
@@ -103,6 +104,7 @@ var styles = StyleSheet.create({
         textAlign: 'center',
     },
     year: {
+        padding: 8,
         textAlign: 'center',
     },
     thumbnail: {
